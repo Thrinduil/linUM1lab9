@@ -3,8 +3,8 @@ INSTALLDIR = /usr/local/bin
 
 all:		program
 
-program:	main.c
-		$(CC) -o electrotest-standalone main.c
+program:	electrotest-standalone.c
+		$(CC) -o electrotest-standalone electrotest-standalone.c
 
 install:	program
 		cp electrotest-standalone $(INSTALLDIR)
