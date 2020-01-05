@@ -10,6 +10,6 @@ Package: electrotest-standalone
 Architecture: any
 Multi-Arch: foreign
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: The bestest program you've ever seen!
+Description: Bestest program you've ever seen!
  It really is!
  It's what gives life meaning!
