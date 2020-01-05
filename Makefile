@@ -1,10 +1,23 @@
-CC = gcc
-INSTALLDIR = /usr/local/bin
+prefix = /usr/local
 
-all:		program
+all:				src/electrotest-standalone
 
-program:	electrotest-standalone.c
-		$(CC) -o electrotest-standalone electrotest-standalone.c
+src/electrotest-standalone:	src/electrotest-standalone.c
+				@echo "CFLAGS=$(CFLAGS)" | \
+					fold -s -w 70 | \
+					sed -e 's/^/# /'
+				$(CC) $(CPPFLAGS) $(CFLAGS) $(LDCFLAGS) -o $@ $^
 
-install:	program
-		cp electrotest-standalone $(INSTALLDIR)
+install:			src/electrotest-standalone
+				install -D src/electrotest-standalone \
+					$(DESTDIR)$(prefix)/bin/electrotest-standalone
+
+clean:
+				-rm -f src/electrotest-standalone
+
+distclean:			clean
+
+uninstall:
+				-rm -f $(DESTDIR)$(prefix)/bin/electrotest-standalone
+
+.PHONY: all install clean distclean uninstall
