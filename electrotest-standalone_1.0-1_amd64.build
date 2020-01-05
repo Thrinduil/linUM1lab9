@@ -1,0 +1,149 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: warning: using a gain-root-command while being root
+dpkg-buildpackage: source package electrotest-standalone
+dpkg-buildpackage: source version 1.0-1
+dpkg-buildpackage: source distribution UNRELEASED
+dpkg-buildpackage: source changed by Fredrik Söderquist <fredrik@fredriksoderquist.se>
+ dpkg-source --before-build electrotest-standalone-1.0
+dpkg-buildpackage: host architecture amd64
+ fakeroot debian/rules clean
+dh clean  
+   dh_testdir
+   dh_auto_clean
+	make -j1 distclean
+make[1]: Entering directory '/root/linUM1lab9/electrotest-standalone-1.0'
+rm -f src/electrotest-standalone
+make[1]: Leaving directory '/root/linUM1lab9/electrotest-standalone-1.0'
+   dh_clean
+	rm -f debian/debhelper-build-stamp
+	rm -f debian/electrotest-standalone.substvars
+	rm -f debian/electrotest-standalone.*.debhelper
+	rm -rf debian/electrotest-standalone/
+	rm -rf debian/.debhelper/
+	rm -f debian/*.debhelper.log
+	rm -f debian/files
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+	rm -f *-stamp
+ dpkg-source -b electrotest-standalone-1.0
+dpkg-source: info: using source format '3.0 (quilt)'
+dpkg-source: info: building electrotest-standalone using existing ./electrotest-standalone_1.0.orig.tar.gz
+dpkg-source: info: building electrotest-standalone in electrotest-standalone_1.0-1.debian.tar.xz
+dpkg-source: info: building electrotest-standalone in electrotest-standalone_1.0-1.dsc
+ debian/rules build
+dh build  
+   dh_testdir
+   dh_update_autotools_config
+   dh_auto_configure
+   dh_auto_build
+	make -j1
+make[1]: Entering directory '/root/linUM1lab9/electrotest-standalone-1.0'
+# CFLAGS=-g -O2 -fPIE -fstack-protector-strong -Wformat 
+# -Werror=format-security -Wall -pedantic
+cc -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fPIE -fstack-protector-strong -Wformat -Werror=format-security -Wall -pedantic  -o src/electrotest-standalone src/electrotest-standalone.c
+src/electrotest-standalone.c: In function ‘main’:
+src/electrotest-standalone.c:87:3: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+   scanf("%f", &volt);
+   ^
+src/electrotest-standalone.c:91:3: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+   scanf("%s", &conn);
+   ^
+src/electrotest-standalone.c:95:3: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+   scanf("%i", &count);
+   ^
+src/electrotest-standalone.c:102:5: warning: ignoring return value of ‘scanf’, declared with attribute warn_unused_result [-Wunused-result]
+     scanf("%f", array+i);
+     ^
+src/electrotest-standalone.c: In function ‘e_resistance’:
+src/electrotest-standalone.c:21:61: warning: iteration 73u invokes undefined behavior [-Waggressive-loop-optimizations]
+         resistance = resistors[i] + resistors[j] + resistors[k];
+                                                             ^
+src/electrotest-standalone.c:19:7: note: containing loop
+       for (k = 0; k < 74; ++k) {
+       ^
+make[1]: Leaving directory '/root/linUM1lab9/electrotest-standalone-1.0'
+   dh_auto_test
+ fakeroot debian/rules binary
+dh binary  
+   dh_testroot
+   dh_prep
+	rm -f debian/electrotest-standalone.substvars
+	rm -f debian/electrotest-standalone.*.debhelper
+	rm -rf debian/electrotest-standalone/
+   debian/rules override_dh_auto_install
+make[1]: Entering directory '/root/linUM1lab9/electrotest-standalone-1.0'
+dh_auto_install -- prefix=/usr
+	install -d debian/electrotest-standalone
+	make -j1 install DESTDIR=/root/linUM1lab9/electrotest-standalone-1.0/debian/electrotest-standalone AM_UPDATE_INFO_DIR=no prefix=/usr
+make[2]: Entering directory '/root/linUM1lab9/electrotest-standalone-1.0'
+install -D src/electrotest-standalone \
+				/root/linUM1lab9/electrotest-standalone-1.0/debian/electrotest-standalone/usr/bin/electrotest-standalone
+make[2]: Leaving directory '/root/linUM1lab9/electrotest-standalone-1.0'
+make[1]: Leaving directory '/root/linUM1lab9/electrotest-standalone-1.0'
+   dh_installdocs
+	install -d debian/electrotest-standalone/usr/share/doc/electrotest-standalone
+	install -p -m0644 debian/README.Debian debian/electrotest-standalone/usr/share/doc/electrotest-standalone/README.Debian
+	install -p -m0644 debian/copyright debian/electrotest-standalone/usr/share/doc/electrotest-standalone/copyright
+   dh_installchangelogs
+	install -p -m0644 debian/changelog debian/electrotest-standalone/usr/share/doc/electrotest-standalone/changelog.Debian
+   dh_installman
+	install -d debian/electrotest-standalone/usr/share/man/man1/
+	install -p -m0644 man/electrotest-standalone.1 debian/electrotest-standalone/usr/share/man/man1/electrotest-standalone.1
+	man --recode UTF-8 ./electrotest\-standalone\.1 > electrotest\-standalone\.1\.new
+	chmod 644 electrotest-standalone.1.new
+	mv -f electrotest-standalone.1.new electrotest-standalone.1
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+	cd debian/electrotest-standalone
+	chmod a-x usr/share/doc/electrotest-standalone/changelog.Debian usr/share/man/man1/electrotest-standalone.1
+	gzip -9nf usr/share/doc/electrotest-standalone/changelog.Debian usr/share/man/man1/electrotest-standalone.1
+	cd '/root/linUM1lab9/electrotest-standalone-1.0'
+   dh_fixperms
+	find debian/electrotest-standalone  -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/electrotest-standalone ! -type l  -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/electrotest-standalone/usr/share/doc -type f  ! -regex 'debian/electrotest-standalone/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/electrotest-standalone/usr/share/doc -type d  -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/electrotest-standalone/usr/share/man debian/electrotest-standalone/usr/man/ debian/electrotest-standalone/usr/X11*/man/ -type f  -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/electrotest-standalone/usr/include -type f  -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/electrotest-standalone/usr/share/applications -type f  -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/electrotest-standalone/usr/lib/x86_64-linux-gnu/perl5/5.22 debian/electrotest-standalone/usr/share/perl5 -type f -perm -5 -name '*.pm'  -print0 2>/dev/null | xargs -0r chmod a-X
+	find debian/electrotest-standalone -perm -5 -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \)  -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/electrotest-standalone/usr/bin -type f  -print0 2>/dev/null | xargs -0r chmod a+x
+	find debian/electrotest-standalone/usr/lib -type f -name '*.ali'  -print0 2>/dev/null | xargs -0r chmod uga-w
+   dh_strip
+	strip --remove-section=.comment --remove-section=.note debian/electrotest-standalone/usr/bin/electrotest-standalone
+   dh_makeshlibs
+	rm -f debian/electrotest-standalone/DEBIAN/shlibs
+   dh_shlibdeps
+	install -d debian/electrotest-standalone/DEBIAN
+	dpkg-shlibdeps -Tdebian/electrotest-standalone.substvars debian/electrotest-standalone/usr/bin/electrotest-standalone
+   dh_installdeb
+   dh_gencontrol
+	echo misc:Depends= >> debian/electrotest-standalone.substvars
+	echo misc:Pre-Depends= >> debian/electrotest-standalone.substvars
+	dpkg-gencontrol -pelectrotest-standalone -ldebian/changelog -Tdebian/electrotest-standalone.substvars -Pdebian/electrotest-standalone
+	chmod 0644 debian/electrotest-standalone/DEBIAN/control
+	chown 0:0 debian/electrotest-standalone/DEBIAN/control
+   dh_md5sums
+	(cd debian/electrotest-standalone >/dev/null ; find . -type f  ! -regex './DEBIAN/.*' -printf '%P\0' | LC_ALL=C sort -z | xargs -r0 md5sum > DEBIAN/md5sums) >/dev/null
+	chmod 0644 debian/electrotest-standalone/DEBIAN/md5sums
+	chown 0:0 debian/electrotest-standalone/DEBIAN/md5sums
+   dh_builddeb
+	dpkg-deb --build debian/electrotest-standalone ..
+dpkg-deb: building package 'electrotest-standalone' in '../electrotest-standalone_1.0-1_amd64.deb'.
+ dpkg-genchanges  >../electrotest-standalone_1.0-1_amd64.changes
+dpkg-genchanges: including full source code in upload
+ dpkg-source --after-build electrotest-standalone-1.0
+dpkg-buildpackage: full upload (original source is included)
+Now running lintian...
+warning: the authors of lintian do not recommend running it with root privileges!
+W: electrotest-standalone: improbable-bug-number-in-closes 0001
+Finished running lintian.

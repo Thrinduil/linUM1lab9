@@ -1,0 +1,13 @@
+Package: electrotest-standalone
+Version: 1.0-1
+Architecture: amd64
+Maintainer: Fredrik Söderquist <fredrik@fredriksoderquist.se>
+Installed-Size: 25
+Depends: libc6 (>= 2.7)
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://fakefake.fake/fake
+Description: Bestest program you've ever seen!
+ It really is!
+ It's what gives life meaning!

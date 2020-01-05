@@ -1,0 +1,32 @@
+Format: 1.8
+Date: Sun, 05 Jan 2020 12:45:20 +0000
+Source: electrotest-standalone
+Binary: electrotest-standalone
+Architecture: source amd64
+Version: 1.0-1
+Distribution: UNRELEASED
+Urgency: low
+Maintainer: Fredrik Söderquist <fredrik@fredriksoderquist.se>
+Changed-By: Fredrik Söderquist <fredrik@fredriksoderquist.se>
+Description:
+ electrotest-standalone - Bestest program you've ever seen!
+Closes: 0001
+Changes:
+ electrotest-standalone (1.0-1) UNRELEASED; urgency=low
+ .
+   * Initial release. Closes: 0001
+Checksums-Sha1:
+ b6ad1dde52e3c3bfbb38e174894a63c361b5df64 939 electrotest-standalone_1.0-1.dsc
+ ff8e628d237a48c60914cf807badbcb805c7899a 1805 electrotest-standalone_1.0.orig.tar.gz
+ adff4f8955b8d702560f9616e7b7af62df87147d 1780 electrotest-standalone_1.0-1.debian.tar.xz
+ 212c7bf4668ec285a0353ce75152538ca88f1161 5204 electrotest-standalone_1.0-1_amd64.deb
+Checksums-Sha256:
+ 57e1747129439d9e687ab544ec7ffe61bba5cf64861ec2792ac362fc354074e6 939 electrotest-standalone_1.0-1.dsc
+ 6eb006f52f80a7e596e6d49ba30445c98af67d8d63206018bbff067983cf60d5 1805 electrotest-standalone_1.0.orig.tar.gz
+ b5a2c021a0cbb313dc29d8ce6a440ae7bbcef7c083aa82d4f758ae7e5efe21bd 1780 electrotest-standalone_1.0-1.debian.tar.xz
+ 3e3fd4795a38b7f3dbe312a76710802f04f66d2c68b955c94c566415f62f92be 5204 electrotest-standalone_1.0-1_amd64.deb
+Files:
+ 545afa85a5bdf53085ae3deb2133efc3 939 devel optional electrotest-standalone_1.0-1.dsc
+ 4c36a7360498f5e30f7464c92e2d6ff4 1805 devel optional electrotest-standalone_1.0.orig.tar.gz
+ 6d237fcc040e440ae7c0e6d0b0f01d97 1780 devel optional electrotest-standalone_1.0-1.debian.tar.xz
+ 896eb294b70daa45796e772297e73516 5204 devel optional electrotest-standalone_1.0-1_amd64.deb
